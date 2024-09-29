@@ -1,6 +1,8 @@
 const { createServer } = require('http')
 const { parse } = require('url')
 const { readFileSync } = require('fs')
+const { renderToString } = require('react-dom/server')
+const React = require('react')
 
 // We got to send React Code from the server
 ///////////////////////////////////
@@ -77,8 +79,10 @@ const server = createServer((req, res) => {
   const pathName = parse(req.url, true).pathname
 
   if (pathName === '/') {
+    const renderedReact = renderToString(<Home />)
     res.writeHead(200, { 'Content-type': 'text/html' })
-    res.end(htmlTemplate)
+    const html = htmlTemplate.replace('%%CONTENT%%', renderedReact)
+    res.end(html)
   } else if (pathName === '/test') {
     res.end('TEST FILE - Route-2')
   } else {
