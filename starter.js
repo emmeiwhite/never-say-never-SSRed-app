@@ -1,9 +1,3 @@
-const { createServer } = require('http')
-const { parse } = require('url')
-const { readFileSync } = require('fs')
-
-// We got to send React Code from the server
-
 const pizzas = [
   {
     name: 'Focaccia',
@@ -66,25 +60,3 @@ function MenuItem({ pizza }) {
     </li>
   )
 }
-
-const htmlTemplate = readFileSync(`${__dirname}/index.html`, 'utf-8')
-
-const server = createServer((req, res) => {
-  // Route-1 Homepage!
-  // res.end('Hello World!')
-
-  const pathName = parse(req.url, true).pathname
-
-  if (pathName === '/') {
-    res.writeHead(200, { 'Content-type': 'text/html' })
-    res.end(htmlTemplate)
-  } else if (pathName === '/test') {
-    res.end('TEST FILE - Route-2')
-  } else {
-    res.end('The URL cannot be found')
-  }
-})
-
-server.listen(8000, () => {
-  console.log('Listening on port 8000')
-})
