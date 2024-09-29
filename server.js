@@ -3,7 +3,7 @@ const { parse } = require('url')
 const { readFileSync } = require('fs')
 
 // We got to send React Code from the server
-
+///////////////////////////////////
 const pizzas = [
   {
     name: 'Focaccia',
@@ -67,6 +67,7 @@ function MenuItem({ pizza }) {
   )
 }
 
+////////////////////////
 const htmlTemplate = readFileSync(`${__dirname}/index.html`, 'utf-8')
 
 const server = createServer((req, res) => {
