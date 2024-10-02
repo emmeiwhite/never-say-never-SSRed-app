@@ -10,5 +10,8 @@
   </head>
   <body>
     <div id="root">%%CONTENT%%</div>
+
+    <!-- Note: When the initial request is served from the server, this HTML file is sent back, but as soon as we reach the below line on the client's browser, another https request is made to the server for client.js file. But until this point there is no route matching client.js -->
+    <script src="./client.js"></script>
   </body>
 </html>
