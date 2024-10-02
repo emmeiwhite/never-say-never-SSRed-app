@@ -6,12 +6,26 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
     <title>Root Index Page</title>
   </head>
   <body>
     <div id="root">%%CONTENT%%</div>
 
     <!-- Note: When the initial request is served from the server, this HTML file is sent back, but as soon as we reach the below line on the client's browser, another https request is made to the server for client.js file. But until this point there is no route matching client.js -->
-    <script src="./client.js"></script>
+    <script
+      type="text/babel"
+      src="./client.js"
+    ></script>
   </body>
 </html>
